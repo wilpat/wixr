@@ -1,0 +1,66 @@
+@font-face {
+	src:url(../fonts/alberto/alberto.ttf);
+	font-family:alberto;
+}
+@font-face {
+	src:url(../fonts/CaviarDreams.ttf);
+	font-family:ca;
+}
+@font-face {
+    font-family:ga;
+    src: url(../fonts/gasper/GasparRegular.otf);
+}
+@font-face {
+    font-family:bl;
+    src: url(../fonts/brie_light/bri293.ttf);
+}
+@font-face {
+    font-family:o1;
+	font-weight:normal;
+    src: url(../fonts/Open_Sans_Condensed/OpenSans-CondLight.ttf);
+}
+@font-face {
+    font-family:o2;
+    src: url(../fonts/Open_Sans_Condensed/OpenSans-CondLightItalic.ttf);
+	
+}
+@font-face {
+    font-family:o3;
+    src: url(../fonts/Open_Sans_Condensed/OpenSans-CondBold.ttf);
+	font-weight:bold;
+}
+@font-face {
+  font-family: go;
+  font-style: normal;   
+  src:url(../fonts/glober/go.otf);
+}
+@font-face {
+  font-family: 'gg';
+  font-style: normal;   
+  src:url(../fonts/glober/gg.otf);
+}
+@font-face {
+	font-family:Jackpot Demo;
+	src:url(../fonts/JackpotDemo.ttf);
+}
+@font-face {
+	font-family:PartyByTom;
+	src:url(../fonts/PartybyTom.TTF);
+}
+@font-face {
+	font-family:Lovelo;
+	src:url(../fonts/Lovelo_Black.otf);
+}
+@font-face {
+	font-family:Lovelo2;
+	src:url(../fonts/Lovelo_Line_Bold.otf);
+}
+
+@font-face {
+	font-family:raleway-l;
+	src:url(../fonts/raleway/Raleway-Light.ttf);
+}
+@font-face {
+	font-family:as;
+	src:url(../fonts/aspace_demo.otf);
+}
