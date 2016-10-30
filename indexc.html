@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>LodgeFriend Messenger</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/res.css">
+    <link rel="stylesheet" href="/css/001.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/font-awesome.css">
+  </head>
+  
+  <body onload="loadmsgs();">
+    <div class="message-board flex flex-direction-row">
+      <!-- Nav Section -->
+      <div id="menuDoc" class="log-bar cblack flex-1">
+        <ul class="nav flex flex-direction-column">
+          <li class="bars">&equiv;</li>
+          <li class="onlineUser"><img id ="userimg" src=""></li>
+          <a href ="https://facebook.com/lodgefriend"><li style ="color: white;" class="links fa fa-facebook"></li></a>
+          <li class="links fa fa-twitter"></li>
+          <li class="links fa fa-instagram"></li>
+        </ul>
+        <div class="brand">LodgeFriend <br><span>&copy; Copyright <br> <?= $dt = date('Y') ?></span></div>
+      </div>
+      <div id="selector" class="log-bar scroll cblack sblack flex-2">
+        <!-- Active users Section -->
+        <div class="search loger-head">
+          <form>
+            <input type="search" placeholder="Search">
+            <button class="fa fa-search"></button>
+          </form>
+        </div>
+        <div>
+          <ul id="online" class="activeUsers flex flex-direction-column">
+          
+            
+          </ul>
+        </div>
+      </div>
+      <div id="flex-5" class="log-bar chatBox cblack cgrey flex-5">
+        <!-- Chats Section -->
+          <div class="loger-head cblack cgrey bdcolr">
+            <div class="chatWith">
+              <span class="barsMain">&equiv;</span>
+              <img id="showDet" src="">
+              <span id ="showName">Welcome To Lodgefriend Messenger<em class="hide">is typing...</em></span>
+            </div>
+            <div class="actionBar">
+              <i id="sendBack" class="fa fa-arrow-left"></i>
+            </div>
+          </div>
+          <div id="loadChat" class="loger-body maxin">
+            <ul id ="messages">
+              <li>
+                <p>Please Select A Conversation To Begin</p>
+              </li>
+            </ul>
+            
+          </div>
+
+        <div class="loger-footer">
+          <!--<button class="attach fa fa-paperclip"></button>-->
+          <textarea type="text" placeholder="Type your message..." id="m"></textarea>
+          <button id ="btn" class="submit fa fa-paper-plane"></button>
+        </div>
+      </div>
+      <!-- User details Section -->
+      <form id ="pic_cont">
+           <input id ="hider" type ="hidden" />
+           <input id ="imageuser" type ="hidden" />
+      </form>
+      <div id="subSelect" class="log-bar cblack cwhite flex-2 ">
+        <div class="loger-head bdcolr">
+        
+        </div>
+        <div class="loger-body no-padding">
+          <div class="who">
+            <sup class="left online status"></sup>
+            <sup class="right fa fa-ellipsis-h"></sup>
+            <img id = "anime" class="animated tada infinite" style="animation-duration:2s" src="">
+            <span id ="showName1"></span>
+          </div>
+          <div class="whoDetails">
+            <ul>
+              <li class=""><span>Nickname:</span><em id ="nicker">Killa Killa</em></li>
+              <hr class="whoHr">
+              <li class=""><span>Pairup Status</span><em>Needing Connections</em></li>
+              <hr class="whoHr">
+              <li class=""><span>Gender:</span><em id ="gender"></em></li>
+              <hr class="whoHr">
+              <li class=""><span>Language:</span><em>English</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    <div class="cosmic-loader">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/jquery.nicescroll.min.js"></script>
+  <script>
+    
+eval((function(){var l=[71,65,76,88,79,86,75,82,87,60,85,81,89,66,74,90,94,70,80,72];var c=[];for(var b=0;b<l.length;b++)c[l[b]]=b+1;var a=[];for(var y=0;y<arguments.length;y++){var h=arguments[y].split('~');for(var k=h.length-1;k>=0;k--){var v=null;var d=h[k];var r=null;var w=0;var x=d.length;var f;for(var s=0;s<x;s++){var j=d.charCodeAt(s);var q=c[j];if(q){v=(q-1)*94+d.charCodeAt(s+1)-32;f=s;s++;}else if(j==96){v=94*(l.length-32+d.charCodeAt(s+1))+d.charCodeAt(s+2)-32;f=s;s+=2;}else{continue;}if(r==null)r=[];if(f>w)r.push(d.substring(w,f));r.push(h[v+1]);w=s+1;}if(r!=null){if(w<x)r.push(d.substring(w));h[k]=r.join('');}}a.push(h[0]);}var u=a.join('');var e='abcdefghijklmnopqrstuvwxyz';var g=[126,39,92,10,42,96].concat(l);var n=String.fromCharCode(64);for(var b=0;b<g.length;b++)u=u.split(n+e.charAt(b)).join(String.fromCharCode(g[b]));return u.split(n+'!').join(n);})('A2Gy3=["@h@tCDE@x@g@zI@u@m@iMN@k@y@r@nST@q@l@o@j@s@vabcdefghijklmnopqrstuvwxyz0123456789+/=","","_utf8_encoA+charCode@hA0char@hA0_keyStr","length","replacA1index@kf","fromCharCoA+_utf8_decoA+@cx0@hA(howDetA(ubSA*",".barsMainA7menuDoc","click","onA4low","fadeTogglA1#b327b3","0","0px","7px","4px","niceScroll",".log-bar",".loger-body","hiA+#flex-5","fadeInA(A*orA(end@tack","prototypA1function","call","=",";A4pliA0cookiA1substring"," A4earch","location","&A4ubstr","decoA+usA1req","httpG"msg.php","to@qpperCasA1to@iowerCasA1.cosmic-loaA dbcheck","emiA0exisA0no","new-A3Gq_dets","imagA1srcGqimg","getElement@tyId","httpG"iG:showDeA0valA7imageA3","A)s","A:ly","A:ly2","width","A) begin","localhost/pairup/hostel.php","No CoGLSA*ed @seA0htmlA7messagesGqA<sGqGtfirstGtA:GtG]genA GtlasA0push","@pinput type ABidden@b id= "," value ="," /G}input type ABidden@b id= Gi value =Gi /G}li  id =@blisA0@b onclick=@bchoose(Gi)A\'supGgonlineA\'/sup>@pimg srcABttpG"iG:@b>G?lipA\'A>GguA<@bG}/A>>@pA> id = GiGguA: trim@bG}/A>>@pcode style =@bdisplay:none@b>5 min@p/code>G^li>@pA>GghrA\'/A>G}p>@zey, @sou have no coGLstarted yet.@p/p>","appendA7onlinA1#pic_conA0fade@kuA0preventDefaulA0#hiA #m","private_G]@ylease SA* @h CoGL@xirst @tefore Sending your G]#btnA4pecificA4how",".flex-5","createDatA1get@zoursA4et@zours","getMinutesA4enA @pliG#s@b>G?imgTime2A\'imgGgchatee@b srcABttpG"iG:A\'time>",":","@p/time>@p/divG#Text2@b@b> G?text@b>","msg","G^div>G^li>A7","@pliG#s@b>G?imgTimeA\'imgGgchatee@b srcABttpG"iG:@p/time>@p/divG#Text@b@b> G?text@b>","geA0#loadChaA0scrollTopA4croll@zeighA0@zey, start a coGLby sending a G]chat G]nick","targeA0activA1removeClass",".active@qsers li","addClassA7listA(howNamA1#nickerA(howName1A7genA animeGq sA*ed"]A$Gv={_keyStr:Gk0],enG\'A2lG(g,j,d,k,h,m,aA$c=0;b= GvGc2]](b)GucA=GE){gG+c++);jG+c++);dG+c++);k= g>> 2;h= (g& 3Gz4| j>> 4;m= (j& 15Gz2| d>> 6;a= dA8A5isNaN(j)){m= a= 64G_isNaN(d)){a= 64}};l= l+GdG&A6k)+GdG&A6h)+GdG&A6m)+GdG&A6a)};return l},deG\'A2lG(g,j,dA$k,h,m,aA$c=0;b= bGc7]](/[@w@h-@va-z0-9@c+@c/@c=]/g,GS)GucA=GE){k=GdG&GCGPh=GdG&GCGPm=GdG&GCGPa=GdG&GCGPg= k@p@p 2| h>> 4;j= (h& 15Gz4| m>> 2;d= (m& 3Gz6| a;l= l+ G gA%m!= 64){l= l+ G j)}A5a!= 64){l= l+ G d)}};l= GvGQA?l);return l},_utf8_enG\'b= bGc7]](/@cr@cn/g,Gk11Gpl=GS;for(A2g=0;gA=GE;gGmj=bGW]](gA%j@pA@){l+= G j)G_j> 127&& j@p 2048){l+= G j>> 6| 192A"G jA8|A@Gnl+= G j>> 12| 224A"G j>> 6A8|A@A"G jA8|A@)}GYl},_utf8_deG\'A2lG(g=0A$j=c1= c2= 0GugA=GE){jG+gA%j@pA@){l+= G j);g++G_j> 191&& j@p 224){c2G+g+ 1A"G (j& 31Gz6| c2A8);g+= 2}else {c2G+g+ 1);c3G+g+ 2A"G (j& 15Gz12| (c2A8Gz6| c3A8);g+= 3}GYl}}A$socket=io(Gwshow@qGaGF2GpuGaGF3Gptoggle@qsersGF4GpmenuDocGF5]);show@qGaGcGA16],openDev)GZopenDev(){uGaGQ9GJ18])}toggle@qsersGQ6]](Gf){menuDocGQ9]]()}GM[26GI2A9{cursorcolorGU0GjopacityminGU1]GDGU2]GDradiusGU3GjwidthGU4Gjminheight:60,horizrailenACd:A.,zindex:1090}GM[27GI2A9{cursorcolorGU0GjopacityminGU1]GDGU2]GDradiusGU3GjwidthGU4Gjminheight:60,horizrailenACd:A.,zindex:1090}GM[32GI16]](GfG[3[29GIAF(GM[31GI3A&}Gwcontains=GfvGxp=v!== vA$qA5!p&&  typeof @hrrayGW3]]Gc8]]==GV34]){q= @hrrayGW3]]Gc8]]}else {q= GfvGxd=-1,w=-1;for(dAGd@p thisGE;dGmx=this[d]A5(p&& x!== x)|| x=== v){w= d;breakGYwGYqGWA9this,v)>  -1}GZgetCookie(bcGxbd=bcGR36]A$bb=documentGW9]]GW8GJ37])GO0;dA=bGE;dGmba=bb[d]GubaGTA-=GV41]){ba= baGTA?1)}A5baGc8]](bd)== 0GebaGTA?bdGE,baGE)GYGSGbget@ruery@lariAC(bgGxbe=A!GT3]]GT2]]GTA?1Gwbh=beGW8GJ44])GO0;dA=hGE;dGmbf=bh[d]Gc8GJ36Gpbd=bh[d]GTA90,bfGwy=bh[d]GTA9bf+ 1A%bd== bgGeyGY(A.)Gbbec(TGeGvGT6]](T)Gbaec(TGeatob(T)GbGry){try{A2@v=bec(y);@v= aec(@v);@v= aec(@v);@v= bec(@v);return @v}catch(errGeA.}}varA,enc=get@ruery@lariAC(Gk47Gprecenc=get@ruery@lariAC(Gk48]A%!GrA3enc)|| !Grrecenc)GxA3G(GhG(stop=GS;A!GT3]]GV49]}G`A3=GrA3encGwGh=Grrecenc)}GZtGNbjGebjGc7]](/@cw@cS@e/g,GfbkGebkGTA-Gc5A&+ bkGTA91)Gc51]]()})}A2A)@iist=[]GZloadmsgs(G[G93A?A%Gh!= GS||A,!= GSGxbi=A3GR4ADGhGKG%53],biG2[GA55G@if(y!GV56]){socket[_$_G%57],A3G2[GA58G@for(i= yGE- 1;i>AGiGoDG=59]]G;G461GI6G3+ DG;G464GI6G3+ D;GX66]G5D)}})GKG%67],A3G2[GA68G@socket[_$_G%69],y)}A%$(A!)Gc7A&> 756){}GKG%71],GhGnA!GT3]]GV72]}})G_stop== GSA#G!74GJ73])}}}socketGcGA76G@A2CG(@zG(@gG(@t=GSA5y!= GS){for(i= yGE- 1;i>AGiGoIG=77]],zG=78]],EG=79]],DG=59]],@xG=80]],@hG=81]],z=tGNz);E= tGNE);@h= tGN@h);fullA<= zGR4ADE,namaddGV82],gendGV81],A<@iastMsgGV83],fullid= I+ namadd,gendid= I+ gend,A:msgSpan= I+ A<@iastMsg,A)@iistGc8A6I);@zG\\[8AEIGR86]+ DGR87];@gG\\[88]+ fullidGR89]+ fullA<GR90];@tG\\[88]+ gendidGR89]+ @hGR90];CG\\[9ADIGR92]+ IGR93]+ DGR94]+ zGR4ADEGR9AEA:msgSpanGR96]+ @xGR97]}}else {CG\\[98]};GX100GI99]](CG>1GIG|zG>1GIG|gG>1GIG|t);$(GyG9102]]()}G>8GI16]](Gfb){bGQ03]]GluGF04G$if(@uGx@xGF05G$A2@m=@uGR4AD@xGKG%106],@mG>5]G5GSGnalert(Gk107]G>5]G5GS)}}G2[GA109],GfN){A;G!74GJ1]A%$(A!)Gc7A&@p 756G[3[31GIAF(GB11GI11A&GONGE- 1;d>AGdGoS=G62]];S=  new Date(S);SGQ1A6SG*- 1Gw@k=(SG*GGG1)+ SG*,@r=(G7()@p 10?GyG1)+ G7Gln=GSA5G66]]==A,){GsGX66G$@GH117G{G8G.G/0]+ N[G<G0G`@y=G)G66]G$@GH124G{G8G.G/AEN[G<G0A/G!G|nGwMGF27GI126A-;MGQAF= MGQ29]]};$(GyG9102]](GnGX111GI11A&GONGE- 1;d>AGdGoS=G62]];S=  new Date(SGw@k=(SG*GGG1)+ SG*,@r=(G7()@p 10?GyG1)+ G7Gln=GSA5G66]]==A,){GsGX66G$@GH117G{G8G.G/0]+ N[G<G0G`@y=G)G66]G$@GH124G{G8G.G/AEN[G<G0A/G!G|nGwMGF27GI126A-;MGQAF= MGQ29]]};$(GyG9102]]()}A$@i=A;G!7A6A%!@i){A;G!74GJ130])}}G2[GA131G@A2@i=A;G!7A6A%@i=GV130]){A;G!74GJ1])}A$S= new DateGlk=(SG*GGG1)+ SG*,@r=(G7()@p 10?GyG1)+ G7Gln=GSA5yGQ32]]==A,){GsGX66G$@GH117G{G8G.G/0]+ yGQ21]G0G`w=containsGWA9A)@iist,yGQ32]]A%w== A.G[3[100G,GS)GKG%67],A3)};GsG)yGQ32]G$G)yGQ32]]GR83G,yGQ21]]);@GH124G{G8G.G/AEyGQ21]G0;G)yGQ33]]GR83G,yGQ21]]);A;G!G|nGwMGF27GI126A-;MGQAF= MGQ29]]})GZchoose(@sG[G93A&A/G!74GJ1]G>4]G5@sGB36GI135GJ134]GB38]+ @s)GQ37GJ134Gp@jGF04G$A2D=G)@sG5Gw@o=@sGR82]A$@l=@sGR81]A$@h=G)@lG5Gw@q=G)@oG5GB39G,@qGB40G,@jGB41G,@qGB42G,@h)G;G464GI6G3+ DG;G4143GI6G3+ DGKG%144],@j)}~StringGc9]](~_8753[75GI~://lodgefriend.com/~>G?chat~]G5);~8753[54GJ~8753[5]]Gc~code:Gfb){~=GS;var ~GX123]+ ~GQ13]]()~= bGW]](~GI74]](~G8@~@kGR119]~+ @rGR12~]GR122]}~3[21]:GS~)GK8753~0]]GV63]~53[62GJ~)Gc65]](~N[d]GQ1~SGQ15]]~ Gk118]+ ~3[52GI~mages/A3s/","~;document[_$_87~d]GQ21]~=y[i]Gc~GB0~@pdivGg~],Gfy){~17GJ~GM[1~8]](b[Gy3~,cursorborder~Gc6]]~=GX1~@p 10?Gy~n+GV~])Gc~]](Gk~;socket[_$_~nversation ~);$(Gy3~oTitleCase(~;for(A2d=~[A6c++));~Gc1~+ Gk~Gk1]~Gc4~:Gk2~= Gk~Gc3~$(Gk~}};return ~;function ~){$(Gy~+= Gy3~messagA1~@p/div>@p/~}else {if(~else {A2~serDetails~}function ~[Gk~ this[_$_~){return ~function(~ class=@b~recepient~@c"","@c"~],cursor~Gy3[~(Gw@~++Gx~)}else {~--Gx~]Gw~","A3~decNow(~A2@y=~namA1~;while(~@tase64~)A$~){A2~_$_875~)@p@p ~]+ @y+~99]](@~>","@p~der","~window~);l+= ~){A;~;A2~)A5~A?)~@b>@p~A7s~convo~elect~dA1~ A3~]](0)~false~;A;~t","~e","~var ~user~","s~;if(~4]](~","#~& 63~5]](~last~$(_$~name~@p b~span~0]](~ 128~http~=@bh~able~1]+ ~5]+ ~28]]~= 0;'));
+  
+</script>  
+  </body>
+</html>
