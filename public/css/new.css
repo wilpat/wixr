@@ -1,0 +1,47 @@
+.first {
+    -webkit-order: -1;
+    order: -1;
+}
+.activeUsers code {
+	float:right;
+	color:#fff;
+	border-radius:7px;
+	padding:4px 10px;
+	background-color:#72c972;
+	font:normal 10px gg;
+}
+button.bck {
+	display:none;
+	color:#8e8a8a;
+}
+@media(max-width:756px) {
+	button.bck {
+		display:block;
+		border:none;
+		background-color:transparent;
+		font-size:20px;
+		position:relative;
+		top:10px;
+	}
+}
+.topMost {
+	z-index:10;
+}
+#subSelect2 {
+	display:none;
+}
+button.searchImg img{
+	width:15px;
+	height:15px;
+	position:relative;
+	top:-3px;
+	margin:0;
+	padding:0;
+}
+.search input {
+	border:none;
+	background-color:transparent;
+}
+.newident{
+display:none
+}
