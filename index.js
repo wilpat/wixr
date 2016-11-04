@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, "indexc.html");
 var url = process.env.MONGOLAB_URI;
-mongoose.connect(url, function(err){
+mongoose.connect('mongodb://localhost/chat', function(err){
 	if(err){
 		console.log(err);
 	}else{
