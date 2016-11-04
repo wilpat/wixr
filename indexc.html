@@ -29,7 +29,7 @@
         <!-- Active users Section -->
         <div class="search loger-head">
           <form>
-            <input type="search" disabled placeholder="Benjamin Francis">
+            <input id ="usName" type="search" disabled placeholder="">
             <button class="searchImg"><img src="http://www.lodgefriend.com/images/lodgeChat.png"></button>
           </form>
         </div>
@@ -270,9 +270,17 @@ function loadmsgs()
                   socket.on('user_dets', function(data){
                     for(i=data.length-1; i>= 0; i--){
                       var image = data[i].image;
+                      var fname = data[i].firstname;
+                      fname = toTitleCase(fname);
+                      var lname = data[i].lastname;
+                      lname = toTitleCase(lname);
+                      var fd = fname+" "+lname;
                       //alert(image);
                       document.getElementById('userimg').src = 'http://lodgefriend.com/images/users/'+image;//This automatically gives the image its href value
                       document.getElementById('showDet').src = 'http://lodgefriend.com/images/users/'+image;
+                      document.getElementById('usName').placeholder = fd;
+
+                      
                   //alert(image);
                   $('#imageuser').val(image);
                     };
