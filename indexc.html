@@ -366,21 +366,27 @@ html+="<p>Hey, You have no conversation started yet.</p>"
   $('#btn').click(function(e){
     
     e.preventDefault();
-    var carrier = $('#hider').val();
-  
-  
-    if (carrier){
-      var msg = $('#m').val();
-      var send = carrier +' '+ msg;
+    var emptyCheck = $('#m').val();
+    if(emptyCheck ==""){
+      alert("Oops! you tried sending an empty message")
+    }else
+      {
+      var carrier = $('#hider').val();
+    
+    
+      if (carrier){
+        var msg = $('#m').val();
+        var send = carrier +' '+ msg;
 
-      socket.emit('private_message', send);
-      $('#m').focus();
-      $('#'+carrier+'new').hide();
-      $('#m').val('');
-    }else{
-      alert('Please Select A Conversation First Before Sending your message');
-      $('#m').val('');
-   }
+        socket.emit('private_message', send);
+        $('#m').focus();
+        $('#'+carrier+'new').hide();
+        $('#m').val('');
+      }else{
+        alert('Please Select A Conversation First Before Sending your message');
+        $('#m').val('');
+     }
+ }
   });
   
   socket.on('specific', function(docs){//Coming from clicking a particular user 
