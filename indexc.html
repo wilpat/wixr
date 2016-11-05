@@ -364,7 +364,7 @@ html+="<p>Hey, You have no conversation started yet.</p>"
   });
 
   $('#btn').click(function(e){
-
+    
     e.preventDefault();
     var carrier = $('#hider').val();
   
@@ -372,7 +372,10 @@ html+="<p>Hey, You have no conversation started yet.</p>"
     if (carrier){
       var msg = $('#m').val();
       var send = carrier +' '+ msg;
+
       socket.emit('private_message', send);
+      $('#m').focus();
+      $('#'+carrier+'new').hide();
       $('#m').val('');
     }else{
       alert('Please Select A Conversation First Before Sending your message');
@@ -460,8 +463,10 @@ html+="<p>Hey, You have no conversation started yet.</p>"
    
     $('.'+data.nick+'us').addClass('first');
     $('.'+data.target+'us').addClass('first');
+    var contentBegin = $('#messages li p').html();
     var content = $('#messages').html();
-    if(content == "Hey, start a conversation by sending a message"){
+    if(contentBegin != "Please Select A Conversation To Begin"){
+      if(content == "Hey, start a conversation by sending a message"){
       $('#messages').html('');
     }
     var time = new Date();
@@ -492,12 +497,20 @@ $('#'+data.nick+'new').show();
 
       }
 
-      $('#'+data.target+'last').html(data.msg);
-    
+     
       
+    
     $('#messages').append(ms);
      var d = $("#loadChat").get(0);
      d.scrollTop = d.scrollHeight;
+}
+      if (data.nick != user)
+     {
+      $('#'+data.nick+'new').show();
+      }
+      $('#'+data.nick+'last').html(data.msg);
+      $('#'+data.target+'last').html(data.msg);
+    
   });
   function choose(targetUser){
     $('.cosmic-loader').fadeIn();
