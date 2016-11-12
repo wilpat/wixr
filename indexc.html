@@ -282,7 +282,7 @@ function loadmsgs()
 
                       
                   //alert(image);
-                  $('#imageuser').val(image);
+                  $('#imageuser').val(image);//Stores the logged in user's image
                     };
                   })
                   
@@ -348,7 +348,7 @@ function loadmsgs()
         pics += "<input type ='hidden' id= "+username+" value ="+image+" />";
         names += "<input type ='hidden' id= \""+fullid+"\" value =\""+fullname+"\" />";
         genderman += "<input type ='hidden' id= \""+gendid+"\" value =\""+gender+"\" />";
-    html += "<li  id ='list"+username+"' onclick='choose(\""+username+"\")' class = \""+username+"us\"><sup class='online'></sup><img src='http://lodgefriend.com/images/users/"+image+"'><div class='lip'><span class='uname'>" + firstname + " " + lastname + "</span><span id = \""+lastmsgSpan+"\" class='ulast trim'>"+msg+"</span><code id =\""+username+"new\"  class = 'newident' >New</code></div></li><span class='hr'></span>";
+    html += "<li  id ='list"+username+"' onclick='choose(\""+username+"\")' class = \""+username+"us outx\"><sup class='online'></sup><img src='http://lodgefriend.com/images/users/"+image+"'><div class='lip'><span class='uname'>" + firstname + " " + lastname + "</span><span id = \""+lastmsgSpan+"\" class='ulast trim'>"+msg+"</span><code id =\""+username+"new\"  class = 'newident' >New</code></div></li><span class='hr'></span>";
     }
   }else{
 html+="<p>Hey, You have no conversation started yet.</p>"
@@ -377,6 +377,61 @@ html+="<p>Hey, You have no conversation started yet.</p>"
       if (carrier){
         var msg = $('#m').val();
         var send = carrier +' '+ msg;
+        var pressSend ='';
+        var img = $('#imageuser').val();
+        /*Time Formatting*/
+
+        time = new Date();
+        time.setHours(time.getHours())
+        var hour = (time.getHours()<10?'0':'') + time.getHours(),
+        min = (time.getMinutes()<10?'0':'') + time.getMinutes();
+
+        /*********************/
+
+        pressSend +="<li><div class='chats'><div class='imgTime2'><img class='chatee' src='http://lodgefriend.com/images/users/"+img+"'><time>"+hour+":"+min+"</time></div><div class='chatText2''> <div class='text'>" + msg + "</div></div></div></li>";
+
+         $('#messages').append(pressSend);
+        socket.emit('private_message', send);
+        $('#m').focus();
+        $('#'+carrier+'new').hide();
+        $('#m').val('');
+      }else{
+        alert('Please Select A Conversation First Before Sending your message');
+        $('#m').val('');
+     }
+ }
+  });
+
+   $('#m').keydown(function(e){
+    if(e.keyCode == 13){
+    var emptyCheck = $('#m').val();
+    if(emptyCheck ==""){
+      alert("Oops! you tried sending an empty message");
+      $('#m').val('');
+      //document.getElementById('m').placeholder = 'Type your message...';
+    }else
+      {
+      var carrier = $('#hider').val();
+    
+    
+      if (carrier){
+        var msg = $('#m').val();
+        var send = carrier +' '+ msg;
+
+         var pressSend ='';
+        var img = $('#imageuser').val();
+        /*Time Formatting*/
+
+        time = new Date();
+        time.setHours(time.getHours())
+        var hour = (time.getHours()<10?'0':'') + time.getHours(),
+        min = (time.getMinutes()<10?'0':'') + time.getMinutes();
+
+        /*********************/
+
+        pressSend +="<li><div class='chats'><div class='imgTime2'><img class='chatee' src='http://lodgefriend.com/images/users/"+img+"'><time>"+hour+":"+min+"</time></div><div class='chatText2''> <div class='text'>" + msg + "</div></div></div></li>";
+
+         $('#messages').append(pressSend);
 
         socket.emit('private_message', send);
         $('#m').focus();
@@ -387,6 +442,7 @@ html+="<p>Hey, You have no conversation started yet.</p>"
         $('#m').val('');
      }
  }
+}
   });
   
   socket.on('specific', function(docs){//Coming from clicking a particular user 
@@ -406,7 +462,7 @@ html+="<p>Hey, You have no conversation started yet.</p>"
         min = (time.getMinutes()<10?'0':'') + time.getMinutes();
         
         var ms = '';
-        if (docs[i].sender == user){
+        if (docs[i].sender == user){//If you sent the message
           var img = $('#imageuser').val();
         ms +="<li><div class='chats'><div class='imgTime2'><img class='chatee' src='http://lodgefriend.com/images/users/"+img+"'><time>"+hour+":"+min+"</time></div><div class='chatText2''> <div class='text'>" + docs[i].msg + "</div></div></div></li>";
       }else{
@@ -466,9 +522,10 @@ html+="<p>Hey, You have no conversation started yet.</p>"
   });
 
   socket.on('chat message', function(data){
-   
+    $('.outx').removeClass('first');
     $('.'+data.nick+'us').addClass('first');
     $('.'+data.target+'us').addClass('first');
+    
     var contentBegin = $('#messages li p').html();
     var content = $('#messages').html();
     if(contentBegin != "Please Select A Conversation To Begin"){
@@ -483,13 +540,19 @@ html+="<p>Hey, You have no conversation started yet.</p>"
     var ms ='';
      if (data.nick == user)
      {
-        
-        var img = $('#imageuser').val();
-        ms +="<li><div class='chats'><div class='imgTime2'><img class='chatee' src='http://lodgefriend.com/images/users/"+img+"'><time>"+hour+":"+min+"</time></div><div class='chatText2''> <div class='text'>" + data.msg + "</div></div></div></li>";
+        /*Update is to  create a function that shows the message has been deivered into the dbase*/
+
+
+        /*Another Update is to  create a function that shows the message has been deivered the reciepient*/
+
+
+
+        /*var img = $('#imageuser').val();
+        ms +="<li><div class='chats'><div class='imgTime2'><img class='chatee' src='http://lodgefriend.com/images/users/"+img+"'><time>"+hour+":"+min+"</time></div><div class='chatText2''> <div class='text'>" + data.msg + "</div></div></div></li>";*/
      
       }
       else{
-$('#'+data.nick+'new').show();
+$('#'+data.nick+'new').show();//If you recieve a new message, show the green NEW icon
         var index = contains.call(convoList, data.nick);
         if (index == false){
           $('#online').html('');
