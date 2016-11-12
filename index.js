@@ -95,7 +95,7 @@ io.on('connection', function(socket){
   socket.on('convos', function(data){
 	
 		var query = records.find({$or:[{starter:data},{receiver:data}]},{});//check th records table for all persons the logged in user has spoken to
-		query.sort('-createDate').exec(function (err, docs){
+		query.sort('createDate').exec(function (err, docs){
 			if(err) throw err;
 			//socket.emit('usernames', docs);
 			
