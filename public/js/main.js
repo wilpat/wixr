@@ -33,23 +33,45 @@ var menuDoc = $('#menuDoc');
 var sendBack = $('#sendBack');
 var chatBody = $('#flex-5');
 var chatUsers = $('#selector');
+var user = $('.onlineUser');
+var goRet = $('#backer');
+var userDetails = $('#subSelect');
+var userDetails2 = $('#subSelect2');
 
 showUserDetails.on('click', openDev);
 sendBack.on('click', returnUser);
+user.on('click', showDet);
+goRet.on('click', takeOut);
 
 function openDev() {
-	userDetails.fadeToggle('slow');
+	if($(window).width() > 756) {
+		userDetails.fadeToggle('slow');
+	}else
+	{
+		alert(goRet);
+		$('#flex-5').hide();
+		userDetails.fadeIn('slow');
+	}
 }
 
 toggleUsers.click(function(){
 	menuDoc.fadeToggle();
 });
 
+function showDet() {
+	$('#flex-5').hide();
+	userDetails2.fadeIn('slow');
+	userDetails.hide();
+};
+function takeOut() {
+	$('#flex-5').fadeIn('slow');
+	userDetails.hide();
+	userDetails2.hide();
+}
 function returnUser() {
 	chatBody.hide();
 	chatUsers.fadeIn();
 }
-
 
 
 

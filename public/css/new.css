@@ -11,19 +11,15 @@
 	font:normal 10px gg;
 }
 button.bck {
-	display:none;
 	color:#8e8a8a;
+	display:block;
+	border:none;
+	background-color:transparent;
+	font-size:20px;
+	position:relative;
+	top:10px;
 }
-@media(max-width:756px) {
-	button.bck {
-		display:block;
-		border:none;
-		background-color:transparent;
-		font-size:20px;
-		position:relative;
-		top:10px;
-	}
-}
+
 .topMost {
 	z-index:10;
 }
